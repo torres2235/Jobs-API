@@ -1,3 +1,7 @@
+### Full Postman Documentation
+
+https://documenter.getpostman.com/view/35384349/2sB2xFdnD8
+
 ## Register User
 
 This endpoint allows for the registration of a new user in the system.
