@@ -1,69 +1,49 @@
-#### Setup
+## Register User
 
-```bash
-npm install && npm start
-```
+This endpoint allows for the registration of a new user in the system.
 
-#### Database Connection
+### HTTP Method
 
-1. Import connect.js
-2. Invoke in start()
-3. Setup .env in the root
-4. Add MONGO_URI with correct value
+`POST`
 
-#### Routers
+### Endpoint
 
-- auth.js
-- jobs.js
+`{{PROD_URL}}/register`
 
-#### User Model
+### Request Body
 
-Email Validation Regex
+The request must include a JSON payload with the following parameters:
 
-```regex
-/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-```
+- **name** (string): The full name of the user. This is a required field.
+    
+- **email** (string): The email address of the user. This must be a valid email format and is a required field.
+    
+- **password** (string): The password for the user account. This is a required field and should be kept secure.
+    
 
-#### Register User
+### Expected Response
 
-- Validate - name, email, password - with Mongoose
-- Hash Password (with bcryptjs)
-- Save User
-- Generate Token
-- Send Response with Token
+Upon successful registration, the server will respond with a confirmation message and may include additional user details. The response will typically be in JSON format.
 
-#### Login User
+### Example Request
 
-- Validate - email, password - in controller
-- If email or password is missing, throw BadRequestError
-- Find User
-- Compare Passwords
-- If no user or password does not match, throw UnauthenticatedError
-- If correct, generate Token
-- Send Response with Token
+``` json
+{
+  "name": "Joshua",
+  "email": "testing@email.com",
+  "password": "secret"
+}
 
-#### Mongoose Errors
+ ```
 
-- Validation Errors
-- Duplicate (Email)
-- Cast Error
+### Example Response
 
-#### Security
+``` json
+{
+    "user": {
+        "name": "Joshua"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODVlMDAxNWQyYzk1N2YzMjlhMjBjYzUiLCJuYW1lIjoiSm9zaHVhIiwiaWF0IjoxNzUwOTkwODY5LCJleHAiOjE3NTM1ODI4Njl9.8OnORigQ6CANaDu0HK4PmiPiZOGRtxTB2mEQ3arSwN4"
+}
 
-- helmet
-- cors
-- xss-clean
-- express-rate-limit
-
-Swagger UI
-
-```yaml
-/jobs/{id}:
-  parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
-      required: true
-      description: the job id
-```
+ ```
