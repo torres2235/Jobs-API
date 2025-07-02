@@ -1,8 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import reactLogo from "../assets/react.svg";
 import viteLogo from "/vite.svg";
-import "../styles/App.css";
 
 function Home() {
   const [count, setCount] = useState(0);
@@ -29,6 +29,13 @@ function Home() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Link to="/login" className="btn">
+        Login
+      </Link>
+      <br />
+      <Link to="/register" className="btn">
+        Sign Up
+      </Link>
     </>
   );
 }
