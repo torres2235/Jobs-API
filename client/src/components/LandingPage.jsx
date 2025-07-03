@@ -1,10 +1,10 @@
-import { useState } from "react";
+//import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function LandingPage() {
   return (
     <>
-      <div className="min-h-full min-w-fit bg-gradient-to-b from-gray-200 to-blue-600 text-gray-800 relative">
+      <div className="min-h-full min-w-fit bg-gradient-to-b from-white to-blue-600 text-gray-800 relative">
         {/* Navbar */}
         <nav className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
           <Link to="/">
@@ -161,7 +161,7 @@ function LandingPage() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gray-100 py-6 text-center text-gray-600 text-sm">
+        <footer className="bg-white py-6 text-center text-gray-600 text-sm">
           &copy; {new Date().getFullYear()} Ctrl+Alt+Employed. All rights
           reserved.
         </footer>

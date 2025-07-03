@@ -67,7 +67,7 @@ const Register = () => {
       </nav>
 
       <motion.div
-        className="flex items-center justify-center min-h-fit pt-[5%] min-w-fit bg-gray-200"
+        className="flex items-center justify-center min-h-full pt-[5%] min-w-fit bg-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
