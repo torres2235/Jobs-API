@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -6,7 +6,9 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [responseData, setResponseData] = useState(null);
 
+  /* Form Validation */
   const validateForm = () => {
     const newErrors = {};
     const emailTrimmed = email.trim();
@@ -27,10 +29,28 @@ const Login = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  /* API Call */
+  const URL = "https://jobs-api-075j.onrender.com/api/v1/auth/login";
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Form submitted", { email, password });
+      const login = { email, password };
+
+      try {
+        const response = await fetch(URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(login),
+        });
+        console.log("Attempting login", { email, password });
+
+        const data = await response.json();
+        setResponseData(data); // Store the API response
+        console.log("API Response:", data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
     }
   };
 
@@ -42,20 +62,6 @@ const Login = () => {
             Ctrl+Alt+Employed
           </h1>
         </Link>
-        {/* <div>
-          <a
-            href="#features"
-            className="mr-6 font-medium hover:text-blue-600 transition"
-          >
-            Features
-          </a>
-          <Link
-            to="/login"
-            className="btn px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-          >
-            Login
-          </Link>
-        </div> */}
       </nav>
 
       <motion.div
@@ -65,13 +71,13 @@ const Login = () => {
         transition={{ duration: 0.5 }}
       >
         <motion.div
-          className="w-full max-w-md p-8 space-y-6 bg-white rounded-2xl shadow-md"
+          className="w-full max-w-md p-8 space-y-6 bg-white rounded-2xl shadow-lg border-1 border-gray-300"
           initial={{ scale: 0.95 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.3 }}
         >
           <h2 className="text-3xl font-bold text-center text-gray-800">
-            Sign in to your account
+            Sign in
           </h2>
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div>

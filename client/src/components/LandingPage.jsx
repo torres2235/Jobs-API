@@ -59,7 +59,7 @@ function LandingPage() {
         {/* Features Section */}
         <section
           id="features"
-          className="bg-white py-20 px-6 max-w-7xl mx-auto text-center"
+          className="bg-white py-20 px-6 max-w-7xl mx-auto text-center rounded-2xl"
         >
           <h3 className="text-3xl font-bold mb-12">
             Features that Make Job Tracking Easy

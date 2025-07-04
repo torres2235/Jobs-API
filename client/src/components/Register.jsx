@@ -73,7 +73,7 @@ const Register = () => {
         transition={{ duration: 0.5 }}
       >
         <motion.div
-          className="w-full max-w-md p-8 space-y-6 bg-white rounded-2xl shadow-md"
+          className="w-full max-w-md p-8 space-y-6 bg-white rounded-2xl shadow-lg border-1 border-gray-300"
           initial={{ scale: 0.95 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.3 }}
