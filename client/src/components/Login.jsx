@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const Login = () => {
@@ -7,6 +7,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [responseData, setResponseData] = useState(null);
+
+  const navigate = useNavigate();
 
   /* Form Validation */
   const validateForm = () => {
@@ -47,7 +49,14 @@ const Login = () => {
 
         const data = await response.json();
         setResponseData(data); // Store the API response
-        console.log("API Response:", data);
+        //console.log("API Response:", data);
+        //console.log(response.status);
+        if (response.status == 200) {
+          console.log("API Response:", data);
+          navigate("/dashboard");
+        } else {
+          console.log(response.status);
+        }
       } catch (error) {
         console.error("Error:", error);
       }
