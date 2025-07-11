@@ -33,6 +33,7 @@ const Login = () => {
 
   /* API Call */
   const URL = "https://jobs-api-075j.onrender.com/api/v1/auth/login";
+  const LOCAL_URL = "http://localhost:3000/api/v1/auth/login";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,6 +54,8 @@ const Login = () => {
         //console.log(response.status);
         if (response.status == 200) {
           console.log("API Response:", data);
+          localStorage.setItem("token", data.token);
+          console.log(localStorage);
           navigate("/dashboard");
         } else {
           console.log(response.status);
