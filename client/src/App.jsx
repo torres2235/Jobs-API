@@ -7,6 +7,7 @@ import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import Jobs from "./pages/Jobs";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route exact path="/jobs" element={<Jobs />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
