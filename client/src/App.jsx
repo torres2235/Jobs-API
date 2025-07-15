@@ -2,11 +2,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./styles/App.css";
 
-import LandingPage from "./components/LandingPage";
-import Error from "./components/Error";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Dashboard from "./components/Dashboard";
+import LandingPage from "./pages/LandingPage";
+import Error from "./pages/Error";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
