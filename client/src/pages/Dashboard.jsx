@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Sidebar, { SidebarItem } from "../components/Sidebar";
 
 import {
@@ -6,7 +7,7 @@ import {
   Receipt,
   Boxes,
   Package,
-  UserCircle,
+  FileText,
   BarChart3,
   LayoutDashboard,
   Settings,
@@ -21,8 +22,10 @@ const Dashboard = () => {
           text="Dashboard"
           active
         />
+        <Link to="/jobs">
+          <SidebarItem icon={<FileText size={20} />} text="Jobs" />
+        </Link>
         <SidebarItem icon={<BarChart3 size={20} />} text="Statistics" alert />
-        <SidebarItem icon={<UserCircle size={20} />} text="Users" />
         <SidebarItem icon={<Boxes size={20} />} text="Inventory" />
         <SidebarItem icon={<Package size={20} />} text="Orders" alert />
         <SidebarItem icon={<Receipt size={20} />} text="Billings" />

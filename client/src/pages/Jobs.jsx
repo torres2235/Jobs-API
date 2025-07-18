@@ -1,5 +1,18 @@
 import { useState, useEffect } from "react";
-import Sidebar from "../components/Sidebar";
+import { Link } from "react-router-dom";
+
+import Sidebar, { SidebarItem } from "../components/Sidebar";
+
+import {
+  LifeBuoy,
+  Receipt,
+  Boxes,
+  Package,
+  FileText,
+  BarChart3,
+  LayoutDashboard,
+  Settings,
+} from "lucide-react";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState(null);
@@ -25,9 +38,24 @@ const Jobs = () => {
 
   return (
     <div className="flex flex-row min-h-full min-w-fit bg-gradient-to-b from-white to-blue-600 text-gray-800 relative">
-      <Sidebar />
+      <Sidebar>
+        <Link to="/dashboard">
+          <SidebarItem icon={<LayoutDashboard size={20} />} text="Dashboard" />
+        </Link>
+        <Link to="/jobs">
+          <SidebarItem icon={<FileText size={20} />} text="Jobs" active />
+        </Link>
+        <SidebarItem icon={<BarChart3 size={20} />} text="Statistics" alert />
+        <SidebarItem icon={<Boxes size={20} />} text="Inventory" />
+        <SidebarItem icon={<Package size={20} />} text="Orders" alert />
+        <SidebarItem icon={<Receipt size={20} />} text="Billings" />
+        <hr className="my-3" />
+        <SidebarItem icon={<Settings size={20} />} text="Settings" />
+        <SidebarItem icon={<LifeBuoy size={20} />} text="Help" />
+      </Sidebar>
+      <div />
+      <h1>Login</h1>
       <div>
-        <h1>Login</h1>
         {jobs && (
           <ul>
             {jobs.jobs.map((job) => (
